@@ -3,7 +3,7 @@ const multer = require('multer')
 const response = require('../../network/response')
 const controller = require('./controller')
 const router = express.Router()
-const config = require('../../config')
+const config = require('../../config/config')
 
 const upload = multer({
   dest: 'public/' + config.filesRoute + '/'

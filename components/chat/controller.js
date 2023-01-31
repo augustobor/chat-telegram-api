@@ -1,5 +1,5 @@
 const store = require('./store')
-const config = require('../../config')
+const config = require('../../config/config')
 
 function addChat (name, users, file) {
   if (!users || !Array.isArray(users)) {

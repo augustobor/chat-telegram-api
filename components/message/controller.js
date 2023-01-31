@@ -1,4 +1,4 @@
-const config = require('../../config')
+const config = require('../../config/config')
 const store = require('./store')
 
 function addMessage (chat, user, message, file) {

@@ -1,9 +1,8 @@
 const express = require('express')
-// import express from 'express' //ES6
-const db = require('./db.js')
+const db = require('./config/db.js')
 const router = require('./network/routes')
 
-const config = require('./config')
+const config = require('./config/config')
 
 const app = express()
 const server = require('http').Server(app)
@@ -11,7 +10,7 @@ const server = require('http').Server(app)
 db(config.dbUrl)
 
 const bodyParser = require('body-parser')
-const socket = require('./socket')
+const socket = require('./config/socket')
 
 socket.connect(server)
 
