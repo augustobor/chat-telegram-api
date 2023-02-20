@@ -7,9 +7,9 @@ const router = express.Router()
 const app = express()
 app.use(router)
 
-router.get('/', async (req, res) => {
+router.get('/:id?', async (req, res) => {
   try {
-    const userId = req.body.id || null
+    const userId = req.params.id || null
 
     const body = await controller.getUser(userId)
 
