@@ -1,7 +1,8 @@
 
 const store = require('./store')
+const config = require('../../config/config')
 
-function addUser (myName) {
+function addUser (myName, myProfile) {
   return new Promise((resolve, reject) => {
     if (!myName) {
       console.error('[messageController] No hay nombre')
@@ -9,8 +10,14 @@ function addUser (myName) {
       reject('Los datos son incorrectos')
     }
 
+    let fileUrl = ''
+    if (myProfile) {
+      fileUrl = config.host + ':' + config.port + '/public/' + config.filesRoute + '/userProfile/' + myProfile
+    }
+
     const newUser = {
-      name: myName
+      name: myName,
+      profile: fileUrl
     }
 
     store.add(newUser).then(resolve(newUser))

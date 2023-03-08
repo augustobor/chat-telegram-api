@@ -8,7 +8,7 @@ const config = {
             process.env.DB_RETRY_WRITES + '&w=' + process.env.DB_W,
   port: process.env.PORT || 3000,
   host: process.env.HOST || 'http://localhost',
-  filesRoute: process.env.FILES_ROUTE || 'files'
+  filesRoute: 'files'
 }
 
 module.exports = config

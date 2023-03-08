@@ -4,7 +4,7 @@
   "description": "Un chat como telegram pero mejor",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "nodemon api/server.js",
     "webpack": "webpack serve --open",
     "lint": "eslint --max-warnings=0",
     "test": "jest"

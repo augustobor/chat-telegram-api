@@ -1,13 +1,28 @@
 const express = require('express')
+const multer = require('multer')
+const path = require('path')
 
 const response = require('../../network/response')
 const controller = require('./controller')
 const router = express.Router()
 
+const config = require('../../config/config')
+
+const storage = multer.diskStorage({
+  destination: 'public/' + config.filesRoute + '/chatProfile',
+  filename: function (req, file, cb) {
+    cb(null, file.originalname + path.extname(file.originalname))
+  }
+})
+
+const upload = multer({
+  storage
+})
+
 const app = express()
 app.use(router)
 
-router.post('/:userId', async (req, res) => {
+router.post('/:userId', upload.single('chatProfile'), async (req, res) => {
   try {
     const usersId = [req.params.userId, ...req.body.addUsersId]
     const name = req.body.name

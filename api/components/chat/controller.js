@@ -8,8 +8,10 @@ function addChat (name, users, file) {
 
   let fileUrl = ''
   if (file) {
-    fileUrl = config.host + ':' + config.port + '/app/' + config.filesRoute + '/chat/' + file
+    fileUrl = config.host + ':' + config.port + '/public/' + config.filesRoute + '/chatProfile/' + file
   }
+
+  console.log(fileUrl)
 
   const date = new Date()
   const chat = { name, users, file: fileUrl, date }

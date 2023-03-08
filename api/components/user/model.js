@@ -4,7 +4,8 @@ const Schema = mongoose.Schema
 
 const mySchema = new Schema({
   id: Schema.ObjectId,
-  name: String
+  name: String,
+  profile: String
 })
 
 const Model = mongoose.model('User', mySchema)
