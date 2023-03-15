@@ -27,7 +27,7 @@
     "socket.io": "^4.5.4",
     "standard": "^17.0.0",
     "supertest": "^6.3.3",
-    "webpack": "^5.75.0"
+    "webpack": "^5.76.0"
   },
   "eslintConfig": {
     "extends": [
