@@ -35,9 +35,29 @@ router.get('/:id?', async (req, res) => {
   }
 })
 
+router.get('/name/getByNamePass', async (req, res) => {
+  try {
+    const body = await controller.findUserByNamePass(req.query.name, req.query.password)
+    await response.success(req, res, body, 200)
+  } catch (error) {
+    await response.error(req, res, 'Unexpected Error', 500)
+    console.error(error)
+  }
+})
+
+router.get('/name/getByJustName', async (req, res) => {
+  try {
+    const body = await controller.findUserByName(req.query.name)
+    await response.success(req, res, body, 200)
+  } catch (error) {
+    await response.error(req, res, 'Unexpected Error', 500)
+    console.error(error)
+  }
+})
+
 router.post('/', upload.single('myProfile'), async (req, res) => {
   try {
-    const body = await controller.addUser(req.body.name, req.body.myProfile)
+    const body = await controller.addUser(req.body.name, req.body.password, req.body.myProfile)
 
     await response.success(req, res, body, 201)
   } catch (error) {
@@ -48,7 +68,6 @@ router.post('/', upload.single('myProfile'), async (req, res) => {
 router.patch('/:id', async (req, res) => {
   try {
     const body = await controller.updateUser(req.params.id, req.body.name)
-
     await response.success(req, res, 'Usuario actualizado correctamente', body, 200)
   } catch (error) {
     await response.error(req, res, 'Información invalida', 400, 'Error en el controlador: ' + error)

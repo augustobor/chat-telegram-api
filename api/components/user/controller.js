@@ -2,7 +2,7 @@
 const store = require('./store')
 const config = require('../../config/config')
 
-function addUser (myName, myProfile) {
+function addUser (myName, myPass, myProfile) {
   return new Promise((resolve, reject) => {
     if (!myName) {
       console.error('[messageController] No hay nombre')
@@ -17,10 +17,23 @@ function addUser (myName, myProfile) {
 
     const newUser = {
       name: myName,
+      password: myPass,
       profile: fileUrl
     }
 
     store.add(newUser).then(resolve(newUser))
+  })
+}
+
+function findUserByName (name, password) {
+  return new Promise((resolve, reject) => {
+    resolve(store.findUsername(name, password))
+  })
+}
+
+function findUserByNamePass (name, password) {
+  return new Promise((resolve, reject) => {
+    resolve(store.findUsernamePass(name, password))
   })
 }
 
@@ -62,5 +75,7 @@ module.exports = {
   addUser,
   getUser,
   updateUser,
-  deleteUser
+  deleteUser,
+  findUserByName,
+  findUserByNamePass
 }

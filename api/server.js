@@ -4,6 +4,8 @@ const router = require('./network/routes')
 
 const config = require('./config/config')
 
+const cors = require('cors')
+
 const app = express()
 const server = require('http').Server(app)
 
@@ -15,6 +17,8 @@ const socket = require('./config/socket')
 socket.connect(server)
 
 app.use(bodyParser.json())
+app.use(cors())
+
 router(app)
 
 server.listen(config.port, function () {

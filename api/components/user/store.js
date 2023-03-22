@@ -17,6 +17,17 @@ async function getUsers (myUserId) {
   return users
 }
 
+async function findUser (myName, pass) {
+  const filter = { name: myName, password: pass }
+  const user = await Model.findOne(filter)
+  return user
+}
+
+async function findByUsername (name) {
+  const user = await Model.findOne({ name })
+  return user
+}
+
 async function updateUser (id, newName) {
   return await Model.updateOne({
     _id: id,
@@ -32,5 +43,7 @@ module.exports = {
   add: addUser,
   get: getUsers,
   update: updateUser,
-  remove: removeUser
+  remove: removeUser,
+  findUsernamePass: findUser,
+  findUsername: findByUsername
 }

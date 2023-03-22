@@ -24,7 +24,7 @@ app.use(router)
 
 router.post('/:userId', upload.single('chatProfile'), async (req, res) => {
   try {
-    const usersId = [req.params.userId, ...req.body.addUsersId]
+    const usersId = [req.params.userId, req.body.addUsersId]
     const name = req.body.name
     const profile = req.body.chatProfile
     const body = await controller.addChat(name, usersId, profile)
@@ -39,7 +39,6 @@ router.post('/:userId', upload.single('chatProfile'), async (req, res) => {
 router.get('/:userId', async (req, res) => {
   try {
     const body = await controller.listChats(req.params.userId)
-
     await response.success(req, res, body, 200)
   } catch (error) {
     await response.error(req, res, 'Internal Error', 400, 'Error en el controlador: ' + error)
