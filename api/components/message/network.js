@@ -15,7 +15,6 @@ app.use(router)
 const filteredMessageResponse = async (req, res, fieldPopulate) => {
   try {
     const filterMessages = req.params.id || null
-
     const body = await controller.getMessages(filterMessages, fieldPopulate)
 
     return await response.success(req, res, body, 200)

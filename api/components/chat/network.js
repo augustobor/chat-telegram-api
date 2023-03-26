@@ -36,9 +36,18 @@ router.post('/:userId', upload.single('chatProfile'), async (req, res) => {
   }
 })
 
-router.get('/:userId', async (req, res) => {
+router.get('/findUsers/:userId', async (req, res) => {
   try {
     const body = await controller.listChats(req.params.userId)
+    await response.success(req, res, body, 200)
+  } catch (error) {
+    await response.error(req, res, 'Internal Error', 400, 'Error en el controlador: ' + error)
+  }
+})
+
+router.get('/findChat/:chatId', async (req, res) => {
+  try {
+    const body = await controller.findChat(req.params.chatId)
     await response.success(req, res, body, 200)
   } catch (error) {
     await response.error(req, res, 'Internal Error', 400, 'Error en el controlador: ' + error)

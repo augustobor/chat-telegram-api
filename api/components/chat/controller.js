@@ -23,6 +23,10 @@ function listChats (userId) {
   return store.list(userId)
 }
 
+function findChat (chatId) {
+  return store.chat(chatId)
+}
+
 function removeChat (chatId) {
   return store.remove(chatId)
 }
@@ -30,5 +34,6 @@ function removeChat (chatId) {
 module.exports = {
   addChat,
   listChats,
-  removeChat
+  removeChat,
+  findChat
 }

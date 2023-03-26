@@ -25,6 +25,9 @@ function listChats (userId) {
       })
   })
 }
+async function findOneChat (chatId) {
+  return await Model.findOne({ _id: chatId })
+}
 
 async function removeChat (chatId) {
   if (!chatId) {
@@ -37,5 +40,6 @@ async function removeChat (chatId) {
 module.exports = {
   add: addChat,
   list: listChats,
-  remove: removeChat
+  remove: removeChat,
+  chat: findOneChat
 }
